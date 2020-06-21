@@ -1,0 +1,141 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@section Header_Contents
+{
+    <style>
+        div.main-img {
+            background-image: url("./img/main.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+            height: calc(100vh - 75px);
+            min-width: 100%;
+        }
+    </style>
+}
+
+<main id="main" class="main main-bgimg">
+    <div class="main-img">
+        <br />
+        <h1 class="display-4 text-center text-white itelescope-heading" style="margin-top: 15vh">Internet Astronomy</h1>
+        <br />
+        <h1 class="text-center text-white itelescope-heading"><em>18 Online Telescopes</em></h1>
+        <h1 class="text-center text-white itelescope-heading"><em>4 Observatories</em></h1>
+        <h1 class="text-center text-white itelescope-heading"><em>376,000+ imaging sessions delivered</em></h1>
+    </div>
+
+    <section class="jumbotron text-center">
+        <h1 class="display-3">Astro-Imaging & Science</h1>
+        <a href="#ready" class="btn btn-success">Internet Controlled Telescopes - Learn More...</a>
+    </section>
+
+    <section class="container">
+        <h2 class="text-success">iTelescope Review, May 2020</h2>
+        <div class="text-center">
+            <iframe class="mx-auto d-block" src="https://www.youtube.com/embed/TRdMwiVIaOc?start=501" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" style="width: 70vw; height: calc(70vw * 0.5625)"></iframe>
+        </div>
+    </section>
+
+
+
+    <section>
+        <br />
+        <hr />
+        <br />
+    </section>
+
+
+    <section class="container rounded-circle .itelescope-container">
+        <br />
+        <br />
+        <br />
+        <!-- Page Intro -->
+        <div class="row">
+            <div class="col-md-10 offset-1">
+                <h3 class="text-center">Whether it's astro-imaging or research we have iTelescopes ready</h3>
+                <br />
+                <h5 class="text-justify">
+                    20 publicly accessible telescopes across 4 observatories, located in both the Northern and Southern Hemispheres, that are fully controlled by you across the Internet.
+                    <br />
+                    Ready to take the next step and participate? Become a member and <a href="#">join</a> the community. <a href="https://www.itelescope.net">iTelescope.net</a> is a not-for-profit organisation, and every dollar spent helps us grow and expand the network of telescopes.
+                </h5>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+    </section>
+
+    <!-- Cards -->
+    <section class="container" id="ready">
+        <div class="row">
+            <div class="col-md py-md-1">
+                <div class="card h-100">
+                    <img class="card-img-top" src="~/img/tarantula_drudis_960_small.jpg" alt="astrophotography">                    
+                    <div class="card-body">
+                        <h2 class="card-title text-success"><strong>ASTROPHOTOGRAPHY</strong></h2>
+                        <p class="card-text text-justify">
+                            Large aperture telescopes to wide field systems, LRGB or Narrowband, we have you covered.
+                        </p>
+                        <a href="#" class="btn btn-outline-success float-right">Learn More <i class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md py-md-1">
+                <div class="card h-100">
+                    <img class="card-img-top" src="~/img/sh-nova-t11-small.jpg" alt="Science & Research">
+                    <div class="card-body">
+                        <h2 class="card-title text-success"><strong>SCIENCE & RESEARCH</strong></h2>
+                        <p class="card-text text-justify">
+                            Photometry, Exo-Planets, Comets, Asteroids, NEOs, Minor Planets, Supernova and Variable Stars. We even have a diffraction grating allowing basic spectroscopy.
+                        </p>
+                        <a href="#" class="btn btn-outline-success float-right">Learn More <i class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md py-md-1">
+                <div class="card h-100">
+                    <img class="card-img-top" src="~/img/masterclass_and_tour.jpg" alt="Masterclasses">
+                    <div class="card-body">
+                        <h2 class="card-title text-success"><strong>MASTER-CLASSES 2021</strong></h2>
+                        <div class="card-text text-center text-success">
+                            <h4>5 DAY / NIGHT INTENSE MASTERCLASS</h4>
+                            <br />
+                            <h3>APRIL 8-13 2021</h3>
+                        </div>
+                        
+                        <a href="#" class="btn btn-outline-success float-right">Learn More <i class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md py-md-1">
+                <div class="card h-100">
+                    <img class="card-img-top" src="~/img/darkriver_jennings_960.jpg" alt="One-on-one Tutorials">
+                    <div class="card-body">
+                        <h2 class="card-title text-success"><strong>ONE-ON-ONE TUTORIALS</strong></h2>
+                        <div class="card-text text-center">
+                            Looking for a quick start to iTelescope?
+                            <br />
+                            Eager to learn or improve your image processing skills?
+                            <br />
+                            <br/>
+                            <strong><em>BONUS:   FREE POINTS for YOUR ACCOUNT</em></strong>
+                        </div>
+                        <a href="#" class="btn btn-outline-success float-right mt-1">Learn More <i class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+    </section>
+</main>
