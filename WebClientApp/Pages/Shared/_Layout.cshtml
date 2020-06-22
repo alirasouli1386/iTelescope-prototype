@@ -3,23 +3,27 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebClientApp</title>
+    <title>@ViewData["Title"] - iTelescope.net</title>
     <link rel="icon" type="image/x-icon" href="~/favicon.png">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link href='http://fonts.googleapis.com/css?family=Exo|Helvetica|Roboto|Tangerine' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
     <!--
     <link rel="stylesheet" href="~/css/site.css" />
     -->
 
     <style>
+
+
+
+
         /* Google Roboto font */
         body {
             font-family: 'Roboto', sans-serif;
         }
 
-        h1, h2, h3, h4, h5, h6, .itelescope-heading {
-            font-family: 'Exo', sans-serif;
+        h1, h2, .itelescope-heading {
+            font-family: 'Exo 2', sans-serif;
         }
 
         /* Transparent container */
@@ -52,13 +56,14 @@
         /* Main background image */
         main {
             margin-top: 75px;
-            background: url('./img/logo-transparent.png') repeat center center fixed;
+            background: url('/img/logo-transparent.png') repeat center center fixed;
             background-size: auto;
         }
+
         /* Footer background image */
         .footer-bgimg {
             width: 100%;
-            background-image: url('./img/footer-bg.png');
+            background-image: url('/img/footer-bg.png');
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -111,43 +116,74 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" asp-page="@(!Global.Authenticated ? "/Index" : "/Launchpad/Index")">
             <img src="~/img/logo-nav.png" alt="iTelescope" style="height:50px; height:auto; padding-right:50px" />
         </a>
+
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarToggler">
-            <ul class="navbar-nav ml-auto mt-2 mt-md-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-satellite"></i> Telescopes <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="far fa-images"></i> Gallery</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-comments-dollar"></i> Pricing</a>
-                </li>
+        <div class="collapse navbar-collapse bg-dark" id="navbarToggler">
+            <ul class="navbar-nav ml-auto mt-2">
+                @{
+                    if (!Global.Authenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Telescopes/Index"><i class="fas fa-satellite"></i> Telescopes <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Gallery/Index"><i class="far fa-images"></i> Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Pricing/Index"><i class="fas fa-comments-dollar"></i> Pricing</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Launchpad/Reserve"><i class="fas fa-book"></i> Reserve <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Launchpad/Planner"><i class="fas fa-tasks"></i> Planner</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Launchpad/Download"><i class="fas fa-download"></i> Download</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="homeDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-home"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
+                                <a class="dropdown-item" asp-page="/Index"><i class="far fa-dot-circle"></i> Home</a>
+                                <a class="dropdown-item" asp-page="/Telescopes/Index"><i class="fas fa-satellite"></i> Telescopes</a>
+                                <a class="dropdown-item" asp-page="/Gallery/Index"><i class="far fa-images"></i> Gallery</a>
+                                <a class="dropdown-item" asp-page="/Pricing/Index"><i class="fas fa-comments-dollar"></i> Pricing</a>
+                            </div>
+                        </li>
+                    }
+                }
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="academyDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-university"></i> Academy
                     </a>
                     <div class="dropdown-menu" aria-labelledby="academyDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Glossary</a>
-                        <a class="dropdown-item" href="#">Tutorials</a>
-                        <a class="dropdown-item" href="#">Webinars</a>
+                        <a class="dropdown-item" asp-page="/Academy/Glossary">Glossary</a>
+                        <a class="dropdown-item" asp-page="/Academy/Tutorials">Tutorials</a>
+                        <a class="dropdown-item" asp-page="/Academy/Webinars">Webinars</a>
+                        <a class="dropdown-item" asp-page="/Academy/Students">Students</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="atmosphereDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="climateDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fab fa-soundcloud"></i> Climate
                     </a>
-                    <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="atmosphereDropdownMenuLink">
-                        <a class="dropdown-item" href="#">
+                    <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="climateDropdownMenuLink">
+                        <a class="dropdown-item" asp-page="/Climate/Weather">
                             <i class="fas fa-cloud-sun-rain"></i> Weather
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" asp-page="/Climate/MeteorologicMaps">
                             <i class="fas fa-meteor"></i> Meteorologic Maps
                         </a>
                     </div>
@@ -160,15 +196,29 @@
                     <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="academyDropdownMenuLink">
                         <a class="dropdown-item" href="https://support.itelescope.net/">Support</a>
                         <a class="dropdown-item" href="https://community.itelescope.net/">Community</a>
-                        <a class="dropdown-item" href="#">Contact</a>
-                        <a class="dropdown-item" href="#">About us</a>
+                        <a class="dropdown-item" asp-page="/Contact">Contact</a>
+                        <a class="dropdown-item" asp-page="/About">About us</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-sign-in-alt"></i>
-                    </a>
-                </li>
+                @{
+                    if (!Global.Authenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Account/Login">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Account/Logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </a>
+                        </li>
+                    }
+                }
+
             </ul>
         </div>
     </nav>
@@ -186,22 +236,31 @@
                     </div>
                     <div class="row">
                         <div class="mx-auto col-md-6 offset-md-3 text-center">
-                            <h4>
+                            <h3>
                                 <a href="mailto:support@itelescope.net?Subject=ContactUs"><i class="fas fa-envelope-open-text"></i></a>
                                 <a href="https://twitter.com/iTelescope_Net"><i class="fab fa-twitter"></i></a>
                                 <a href="https://www.facebook.com/itelescope.net/"><i class="fab fa-facebook"></i></a>
                                 <a href="https://www.youtube.com/channel/UChVuSrLOaml7Mq_fGf_5PGQ"><i class="fab fa-youtube"></i></a>
-                            </h4>
+                            </h3>
                         </div>
                     </div>
                     <br />
                     <div class="row">
                         <div class="col-md-6 offset-md-3 text-center">
-                            <h4 class="bg-transparent text-white">
-                                <a href="" target="_top"><i class="fas fa-balance-scale"></i> Legal</a>
+                            <h6 class="bg-transparent text-white">
+                                <a asp-page="/Policy/Terms" target="_top"><i class="fas fa-balance-scale"></i> Terms of Use</a>
                                 &nbsp;&nbsp;
-                                <a href="/About" target="_top"><i class="fas fa-users"></i> About Us</a>
-                            </h4>
+                                <a asp-page="/Policy/Privacy" target="_top"><i class="fas fa-user-secret"></i> Privacy</a>
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3 text-center">
+                            <h6 class="bg-transparent text-white">
+                                <a asp-page="/Policy/Transaction" target="_top"><i class="fas fa-hand-holding-usd"></i> Transaction and Refund</a>
+                                &nbsp;&nbsp;
+                                <a asp-page="/About" target="_top"><i class="fas fa-users"></i> About Us</a>
+                            </h6>
                         </div>
                     </div>
                     <br />

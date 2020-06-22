@@ -6,5 +6,14 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\img\" />
+    <Folder Include="Pages\Telescopes\" />
+    <Folder Include="Pages\Gallery\" />
+    <Folder Include="Pages\Pricing\" />
+    <Folder Include="Pages\Climate\" />
+    <Folder Include="Pages\Account\" />
+    <Folder Include="Pages\Academy\" />
+    <Folder Include="Pages\Policy\" />
+    <Folder Include="Pages\Social\" />
+    <Folder Include="Pages\Launchpad\" />
   </ItemGroup>
 </Project>
